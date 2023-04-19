@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %} Pet Details {% endblock %}
+
+{% block content %}
+
+<h1>{{pet.name}}</h1>
+
+<img src="{{pet.photo_url}}" width="400" height="400">
+
+
+
+<p> Species : {{pet.species}}</p>
+<p> Age: {{pet.age}}</p>
+<p> Notes:  {{pet.notes}}</p>
+
+
+
+<form action="/pet/{{pet.id}}/edit">
+    <button type="submit" class="btn-success"> Edit</button>
+</form>
+
+{% endblock %}
