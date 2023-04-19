@@ -2,36 +2,40 @@
 
 {% block title %} Pet Home Page {% endblock %}
 
+
 {% block content %}
 
-
-<h1>Pet Adoption</h1>
-    
-{% for pet in pets %}
-
-<h2>{{pet.name}}</h2>
-
-
-{% if pet.available == True %}
-
-<p><b>Available</b></p>
-
-{% endif %}
-
-
-{% if pet.available == False %}
-
-<p> Not Available</p>
-
-{% endif %}
+<div class="text-center">
+<h1 class="display-1 mb-5">Pets</h1>
+</div>
 
 
 
-<img src="{{pet.photo_url}}" width="200" height="300">
 
+<div class="row" style="width: 1250px;">
+  {% for pet in pets %}
+  <div class="col-md-4">
+    <div class="card mb-4">
+      <img src="{{ pet.photo_url }}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{ pet.name }}</h5>
+        {% if pet.available == True %}
+        <p class="card-text">{{ pet.name }} is <b class="text-success">Available</b></p>
+        {% else %}
+        <p class="card-text">{{ pet.name }} is Not Available</p>
+        {% endif %}
+        <a href="/pet/{{ pet.id }}" class="btn btn-primary">More Details</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
-{% endfor %}
-
-<a href="/add"> Add New Pet</a>
+<form action="/add" method="GET">
+  <button class="btn-success btn-lg">Add Pet</button>
+</form>
 
 {% endblock %}
+
+  
+

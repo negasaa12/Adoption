@@ -9,6 +9,7 @@
 <h1> Add A New Pet</h1>
 
 
+<div class="input-group mb-4">
 <form method="POST" action="/add">
     {{ form.hidden_tag() }}
 
@@ -19,8 +20,9 @@
             {{field(class_="form-control")}}
         </div>
     {% endfor %}
-    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+    <button type="submit" class="btn btn-success">Submit</button>
 
 </form>
+</div>
 
 {% endblock %}
